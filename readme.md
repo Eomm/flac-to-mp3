@@ -1,5 +1,7 @@
 # Flac to MP3
 
+[![Build Status](https://travis-ci.org/Eomm/flac-to-mp3.svg?branch=master)](https://travis-ci.org/Eomm/flac-to-mp3)
+
 Convert .flac files to .mp3.
 
 ## Prerequisites

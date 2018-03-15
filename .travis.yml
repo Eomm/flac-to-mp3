@@ -1,0 +1,35 @@
+sudo: required
+language: node_js
+node_js:
+- 8
+before_install:
+  # Script credits @spookyUnknownUser https://gist.github.com/spookyUnknownUser/dd8c75319ec581c1028310cedaea786c
+  - export STATIC_HOST=https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-64bit-static.tar.xz
+  - export FILENAME=ffmpeg-git-64bit-static.tar.xz
+  - cd /usr/local/bin
+  - sudo mkdir ffmpeg
+  # Made dir
+  - cd ffmpeg
+  # Downloading
+  - sudo wget $STATIC_HOST
+  # Download finished
+  # Unzipping
+  - sudo tar xf $FILENAME --strip-components=1
+  - sudo rm $FILENAME
+  # Symlinking
+  - sudo ln -s /usr/local/bin/ffmpeg/ffmpeg /usr/bin/ffmpeg
+  - sudo ln -s /usr/local/bin/ffmpeg/ffpropbe /usr/bin/ffpropbe
+  # FFmpeg installed!
+  # Download test files
+  - cd $TRAVIS_BUILD_DIR/test/resources/test-dir
+  - sudo wget http://www.eclassical.com/custom/eclassical/files/BIS1536-001-flac_16.flac
+  - sudo wget http://www.eclassical.com/custom/eclassical/files/BIS1536-001-flac_24.flac
+  - sudo wget http://www.eclassical.com/custom/eclassical/files/BIS1447-002-flac_16.flac
+  - sudo wget http://www.eclassical.com/custom/eclassical/files/BIS1447-002-flac_24.flac
+  - sudo cp BIS1536-001-flac_16.flac $TRAVIS_BUILD_DIR/test/resources/to-convert.flac
+  # End
+  - cd $TRAVIS_BUILD_DIR
+install:
+  - npm install --dev
+script:
+  - npm test

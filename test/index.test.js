@@ -52,7 +52,7 @@ describe('FlacConverter TEST', () => {
         expect(file.code).toBe(0);
         expect(file.fileConverted).toMatch(/resources\/to-convert.mp3$/);
         expect(fs.existsSync(file.fileConverted)).toBeTruthy();
-      }));
+      }), 240000);
 
   test('Convert a directory with only FLAC files', () =>
     converter.convertDirectory(downloadDir)
