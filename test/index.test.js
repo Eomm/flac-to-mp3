@@ -14,6 +14,7 @@ const testFiles = [
 ];
 
 const downloadDir = './test/resources/test-dir/';
+const downloadDirFake = './test/resources/test-dir-fake/';
 const downloadFile = './test/resources/to-convert.flac';
 
 const download = (url, dest) => new Promise((resolve, reject) => {
@@ -54,11 +55,35 @@ describe('FlacConverter TEST', () => {
         expect(fs.existsSync(file.fileConverted)).toBeTruthy();
       }), 240000);
 
+  test('Test error manage of single file', () =>
+    converter.convertFile('this/not-existing-file.flac')
+      .then(() => {
+        // An error must occur
+        expect(true).toBeFalsy();
+      })
+      .catch(err => expect(err).toBeDefined()));
+
   test('Convert a directory with only FLAC files', () =>
     converter.convertDirectory(downloadDir)
       .then((files) => {
         expect(files).toHaveLength(testFiles.length);
       }), 240000);
+
+  test('Test error manage of directory', () =>
+    converter.convertDirectory('this/is/not/a/valid/directory')
+      .then(() => {
+        // An error must occur
+        expect(true).toBeFalsy();
+      })
+      .catch(err => expect(err).toBeDefined()));
+
+  test('Test error manage one bad file of directory', () =>
+    converter.convertDirectory(downloadDirFake)
+      .then(() => {
+        // An error must occur
+        expect(true).toBeFalsy();
+      })
+      .catch(err => expect(err).toBeDefined()));
 
   afterAll(() => {
     glob('**/*.mp3', (err, matches) => {

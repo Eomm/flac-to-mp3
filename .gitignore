@@ -1,7 +1,8 @@
 node_modules/
-test/*.flac
-test/*.mp3
+coverage/
 npm-debug.log
 *.mp3
+*.flac
+!this*.flac
 .vscode/*
 .env
