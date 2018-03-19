@@ -6,3 +6,4 @@ npm-debug.log
 !this*.flac
 .vscode/*
 .env
+.coveralls.yml
