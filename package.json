@@ -1,26 +1,27 @@
 {
-  "name": "flac-to-mp3",
-  "version": "1.0.4",
-  "description": "Convert .flac files to .mp3",
-  "main": "index.js",
+  "name": "ffmpeg-wrapper",
+  "version": "1.0.0",
+  "description": "Convert .flac files to .mp3 using ffmpeg",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest --coverage",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coverage": "npm test && npm run coveralls"
   },
   "keywords": [
     "flac",
     "mp3",
-    "convert"
+    "convert",
+    "converter",
+    "ffmpeg",
+    "utils",
+    "wrapper"
   ],
-  "author": "Adrian Lynch (adi_ady_ade@hotmail.com)",
-  "contributors": [
-    "Manuel Spigolon <behemoth89@gmail.com> (https://github.com/Eomm)"
-  ],
+  "author": "Manuel Spigolon <behemoth89@gmail.com> (https://github.com/Eomm)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/adrianblynch/flac-to-mp3.git"
+    "url": "https://github.com/Eomm/flac-to-mp3.git"
   },
   "dependencies": {},
   "devDependencies": {
