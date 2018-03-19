@@ -34,3 +34,9 @@ install:
 script:
   - npm test
 after_success: npm run coveralls
+deploy:
+  provider: npm
+  email: behemoth89@gmail.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
