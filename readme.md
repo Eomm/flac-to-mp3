@@ -40,11 +40,20 @@ This is an ultra-wide learning project, doesn't aim to be a [complete-ready-to-u
 
 ## Installation
 
+**NPM package**
+
 ```
 npm install ffmpeg-wrapper
 ```
 
 This module need that [ffmpeg.org](https://www.ffmpeg.org/download.html) is installed on the local machine.
+
+
+**Docker image**
+
+```
+docker pull eomm/ffmpeg-wrapper:1.0.0
+```
 
 
 ### Usage
@@ -69,6 +78,12 @@ converter.convertDirectory('path-with-flac/')
         // An error occured (some files could be converted)
       });
 
+```
+
+With docker you can run simply a one-convert-action that convert a directory and then remove the container:
+
+```
+docker container run -v "/c/Users/user/convertDirectory/:/var/convert/" --rm eomm/ffmpeg-wrapper
 ```
 
 
